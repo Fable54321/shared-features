@@ -33,8 +33,7 @@ export default function CalendarEventPanel() {
           </h3>
 
           <p className="mt-1 text-sm text-slate-500">
-            {events.length} absence
-            {events.length !== 1 ? "s" : ""}
+            Absence(s) de la journée
           </p>
         </div>
 
