@@ -25,7 +25,7 @@ export default function CalendarEventPanel() {
   const events = getEventsByDate(selectedDate);
 
   return (
-    <aside className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-4">
+    <aside className="min-w-0 rounded-xl border border-slate-200 bg-tertiary p-4">
       <div className="mb-5 flex items-start justify-between gap-3">
         <div>
           <h3 className="text-base font-bold capitalize text-slate-800">

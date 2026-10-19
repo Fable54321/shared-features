@@ -30,7 +30,7 @@ export default function CalendarEventItem({
     <div className="flex gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
       <div
         className={`w-1 shrink-0 rounded-full ${
-          isApproved ? "bg-[#4b7312]" : "bg-amber-400"
+          isApproved ? "bg-secondary" : "bg-amber-400"
         }`}
       />
 
@@ -44,7 +44,7 @@ export default function CalendarEventItem({
             className={`rounded-full px-2 py-1 text-xs font-medium ${
               isApproved
                 ? "bg-green-100 text-green-800"
-                : "bg-amber-100 text-amber-800"
+                : "bg-orange-light text-orange-dark"
             }`}
           >
             {statusLabel}

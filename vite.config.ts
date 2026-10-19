@@ -14,20 +14,21 @@ export default defineConfig({
       filename: "remoteEntry.js",
 
       exposes: {
-        "./Calendar": "./src/Pages/100--Calendar/Components/Calendar.tsx",
+        "./Calendar":
+          "./src/Pages/100--Calendar/Components/Calendar.tsx",
         "./CalendarProvider":
           "./src/Pages/100--Calendar/Contexts/CalendarContext.tsx",
         "./CalendarFeature":
-          "./src/Pages/100--Calendar/CalendarFeature.tsx",  
+          "./src/Pages/100--Calendar/CalendarFeature.tsx",
       },
 
       shared: {
-        react: {
-          singleton: true,
-        },
-        "react-dom": {
-          singleton: true,
-        },
+        react: { singleton: true },
+        "react-dom": { singleton: true },
+      },
+
+      dev: {
+        remoteHmr: true,
       },
     }),
   ],

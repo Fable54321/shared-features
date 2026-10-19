@@ -56,7 +56,7 @@ export default function CalendarDay({
         ${!isCurrentMonth
           ? "cursor-default bg-slate-50 text-slate-300"
           : "cursor-pointer hover:bg-green-50"}
-        ${isSelected ? "bg-lime-50 ring-1 ring-inset ring-[#96c61c]" : ""}
+        ${isSelected ? "bg-lime-50 ring-1 ring-inset ring-primary" : ""}
       `}
     >
       <span
@@ -64,7 +64,7 @@ export default function CalendarDay({
           flex h-7 w-7 items-center justify-center
           rounded-full text-sm font-medium
           ${isToday
-            ? "bg-[#4b7312] text-white"
+            ? "bg-secondary text-white"
             : isCurrentMonth
               ? "text-slate-700"
               : "text-slate-300"}
@@ -77,14 +77,14 @@ export default function CalendarDay({
         <div className="flex items-center justify-center gap-1">
           {hasApproved && (
             <span
-              className="h-2 w-2 rounded-full bg-[#4b7312]"
+              className="h-2 w-2 rounded-full bg-secondary"
               title="Congé approuvé"
             />
           )}
 
           {hasPending && (
             <span
-              className="h-2 w-2 rounded-full bg-amber-400"
+              className="h-2 w-2 rounded-full bg-yellow-500"
               title="Congé en attente"
             />
           )}

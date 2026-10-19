@@ -71,7 +71,7 @@ export default function CalendarGrid() {
         {WEEKDAYS.map((day) => (
           <div
             key={day}
-            className="border-b border-slate-200 border-r py-3 text-center text-xs font-semibold text-white sm:text-sm"
+            className="border-b border-slate-200 border-r py-3 text-center text-xs font-semibold text-white sm:text-[0.95rem]"
           >
             {day}
           </div>

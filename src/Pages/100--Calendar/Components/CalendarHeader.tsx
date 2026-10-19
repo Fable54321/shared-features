@@ -19,7 +19,7 @@ export default function CalendarHeader() {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <h2 className="text-xl font-primary font-bold capitalize text-slate-800 md:text-2xl">
+        <h2 className="text-xl font-primary font-bold capitalize text-secondary-alt md:text-2xl">
           {monthLabel}
         </h2>
         <p className="text-sm text-slate-500">
