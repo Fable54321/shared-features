@@ -19,6 +19,7 @@ export default defineConfig(({ mode, command }) => {
       federation({
         name: "vegibec_shared",
         filename: "remoteEntry.js",
+        shareStrategy: "loaded-first",
 
         exposes: {
           "./Calendar":
@@ -32,8 +33,10 @@ export default defineConfig(({ mode, command }) => {
         },
 
         shared: {
-          react: { singleton: true },
-          "react-dom": { singleton: true },
+          react: { singleton: true, requiredVersion: "19.3.1" },
+          "react/": { singleton: true, requiredVersion: "19.3.1" },
+          "react-dom": { singleton: true, requiredVersion: "19.3.1" },
+          "react-dom/": { singleton: true, requiredVersion: "19.3.1" },
         },
 
         dev: {
