@@ -93,13 +93,7 @@ export default function CalendarGrid() {
         className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 sm:text-sm"
         aria-label="Légende du calendrier"
       >
-        <div className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="h-2 w-2 shrink-0 rounded-full bg-yellow-500"
-          />
-          <span>Au moins une personne est absente cette journée</span>
-        </div>
+        
       </div>
     </div>
   );
