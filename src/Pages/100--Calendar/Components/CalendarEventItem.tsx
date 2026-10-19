@@ -1,5 +1,5 @@
 
-import { CalendarDays, Clock3 } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import type {
   CalendarEventItem,
 } from "../Types/Calendar.types";
@@ -13,9 +13,7 @@ export default function CalendarEventItem({
 }: CalendarEventItemProps) {
   const isApproved = event.status === "approved";
 
-  const statusLabel = isApproved
-    ? "Approuvé"
-    : "En attente";
+
 
   const formatDate = (date: string) => {
     const [year, month, day] = date.split("-").map(Number);
@@ -30,7 +28,7 @@ export default function CalendarEventItem({
     <div className="flex gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
       <div
         className={`w-1 shrink-0 rounded-full ${
-          isApproved ? "bg-secondary" : "bg-amber-400"
+          isApproved ? "bg-secondary" : "bg-orange-dark/70"
         }`}
       />
 
@@ -40,18 +38,10 @@ export default function CalendarEventItem({
             {event.employeeName}
           </p>
 
-          <span
-            className={`rounded-full px-2 py-1 text-xs font-medium ${
-              isApproved
-                ? "bg-green-100 text-green-800"
-                : "bg-orange-light text-orange-dark"
-            }`}
-          >
-            {statusLabel}
-          </span>
+       
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-slate-500">
+        <div className="flex items-center gap-2 text-md text-slate-500">
           <CalendarDays size={14} />
           <span>
             {formatDate(event.startDate)}
@@ -60,15 +50,7 @@ export default function CalendarEventItem({
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-slate-500">
-          <Clock3 size={14} />
-          <span>
-            {event.requestedDates.length} jour
-            {event.requestedDates.length > 1 ? "s" : ""}
-            {" "}demandé
-            {event.requestedDates.length > 1 ? "s" : ""}
-          </span>
-        </div>
+       
       </div>
     </div>
   );

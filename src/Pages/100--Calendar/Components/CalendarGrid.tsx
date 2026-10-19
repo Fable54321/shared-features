@@ -66,25 +66,40 @@ export default function CalendarGrid() {
   }, [currentYear, currentMonth]);
 
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-slate-200">
-      <div className="grid grid-cols-7 bg-secondary text-white">
-        {WEEKDAYS.map((day) => (
-          <div
-            key={day}
-            className="border-b border-slate-200 border-r py-3 text-center text-xs font-semibold text-white sm:text-[0.95rem]"
-          >
-            {day}
-          </div>
-        ))}
+    <div className="min-w-0">
+      <div className="overflow-hidden rounded-xl border border-slate-200">
+        <div className="grid grid-cols-7 bg-secondary text-white">
+          {WEEKDAYS.map((day) => (
+            <div
+              key={day}
+              className="border-b border-slate-200 border-r py-3 text-center text-xs font-semibold text-white sm:text-[0.95rem]"
+            >
+              {day}
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-7">
+          {days.map((day) => (
+            <CalendarDay
+              key={day.date}
+              {...day}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-7">
-        {days.map((day) => (
-          <CalendarDay
-            key={day.date}
-            {...day}
+      <div
+        className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 sm:text-sm"
+        aria-label="Légende du calendrier"
+      >
+        <div className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className="h-2 w-2 shrink-0 rounded-full bg-yellow-500"
           />
-        ))}
+          <span>Au moins une personne est absente cette journée</span>
+        </div>
       </div>
     </div>
   );

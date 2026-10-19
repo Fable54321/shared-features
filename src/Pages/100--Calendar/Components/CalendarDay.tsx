@@ -34,13 +34,7 @@ export default function CalendarDay({
 
   const isToday = date === todayString;
 
-  const hasApproved = events.some(
-    (event) => event.status === "approved",
-  );
-
-  const hasPending = events.some(
-    (event) => event.status === "pending",
-  );
+  const hasTimeOff = events.length > 0;
 
   return (
     <button
@@ -51,8 +45,8 @@ export default function CalendarDay({
       aria-pressed={isSelected}
       className={`
         relative flex min-h-16 flex-col items-center
-        gap-2 border-b border-r border-slate-100
-        px-1 py-3 transition-colors sm:min-h-22
+        gap-2 border-b border-r border-slate-300
+        px-1 py-3 transition-colors sm:min-h-30
         ${!isCurrentMonth
           ? "cursor-default bg-slate-50 text-slate-300"
           : "cursor-pointer hover:bg-green-50"}
@@ -62,7 +56,7 @@ export default function CalendarDay({
       <span
         className={`
           flex h-7 w-7 items-center justify-center
-          rounded-full text-sm font-medium
+          rounded-full text-[0.975rem] font-medium
           ${isToday
             ? "bg-secondary text-white"
             : isCurrentMonth
@@ -75,17 +69,10 @@ export default function CalendarDay({
 
       {isCurrentMonth && (
         <div className="flex items-center justify-center gap-1">
-          {hasApproved && (
-            <span
-              className="h-2 w-2 rounded-full bg-secondary"
-              title="Congé approuvé"
-            />
-          )}
-
-          {hasPending && (
+          {hasTimeOff && (
             <span
               className="h-2 w-2 rounded-full bg-yellow-500"
-              title="Congé en attente"
+              title="Au moins une personne est absente cette journée"
             />
           )}
         </div>
