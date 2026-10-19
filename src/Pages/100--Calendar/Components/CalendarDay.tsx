@@ -71,7 +71,7 @@ export default function CalendarDay({
         <div className="flex items-center justify-center gap-1">
           {hasTimeOff && (
             <span
-              className="h-2 w-2 rounded-full bg-yellow-500"
+              className="h-2.5 w-2.5 rounded-full bg-yellow-500"
               title="Au moins une personne est absente cette journée"
             />
           )}
