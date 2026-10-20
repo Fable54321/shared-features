@@ -1,18 +1,24 @@
 
+import NotificationBell from "./Components/NotificationBell";
+
 import {
   NotificationProvider,
   type NotificationApiFetch,
 } from "./Contexts/NotificationsContext";
 
-interface NotificationFeatureProps {
+import type {
+  NotificationAppUrls,
+} from "./Components/NotificationDropdown";
+
+export interface NotificationFeatureProps {
   apiFetch: NotificationApiFetch;
-  children: React.ReactNode;
+  appUrls: NotificationAppUrls;
   pollingInterval?: number;
 }
 
 export default function NotificationFeature({
   apiFetch,
-  children,
+  appUrls,
   pollingInterval = 30000,
 }: NotificationFeatureProps) {
   return (
@@ -20,7 +26,7 @@ export default function NotificationFeature({
       apiFetch={apiFetch}
       pollingInterval={pollingInterval}
     >
-      {children}
+      <NotificationBell appUrls={appUrls} />
     </NotificationProvider>
   );
 }
