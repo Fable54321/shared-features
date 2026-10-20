@@ -37,10 +37,10 @@ export default function NotificationItem({
           onClick={() => onOpen(notification)}
           className="vsf:w-full vsf:cursor-pointer vsf:text-left"
         >
-          <p className="vsf:text-sm vsf:font-semibold vsf:text-slate-800">
+          <p className="vsf:text-md vsf:font-semibold vsf:text-slate-800">
             {notification.title}
           </p>
-          <p className="vsf:mt-1 vsf:line-clamp-3 vsf:text-xs vsf:text-slate-600">
+          <p className="vsf:mt-1 vsf:line-clamp-3 vsf:text-sm vsf:text-slate-600">
             {notification.message}
           </p>
           <p className="vsf:mt-2 vsf:text-[11px] vsf:text-slate-400">

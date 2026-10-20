@@ -1,11 +1,4 @@
-/*
- * Shared features are loaded after their host applications. Keep their
- * Tailwind utilities in a separate namespace so an unprefixed utility from
- * this bundle cannot override a host utility with the same specificity.
- *
- * Preflight is intentionally omitted: the host application owns document
- * level resets, while this remote only ships its theme and utilities.
- */
+
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme) prefix(vsf);
 @import "tailwindcss/utilities.css" layer(utilities) prefix(vsf);
@@ -22,7 +15,7 @@
   --color-primary-light: hsl(77, 75%, 73%);
   --color-secondary-light: hsl(85, 33%, 92%);
   --color-secondary-alt: hsl(85, 43%, 36%);
-  --font-primary: system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-secondary: system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-primary: system-ui, "Poppins", Roboto, sans-serif;
+  --font-secondary: system-ui, "Merriweather", Roboto, sans-serif;
   --font-poppins: "Poppins", system-ui, sans-serif;
 }

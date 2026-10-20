@@ -153,11 +153,11 @@ export default function NotificationDropdown({
     <section
       role="region"
       aria-label="Notifications"
-      className="vsf:flex vsf:max-h-[min(75vh,560px)] vsf:w-full vsf:flex-col vsf:overflow-hidden vsf:rounded-xl vsf:border vsf:border-slate-200 vsf:bg-white vsf:text-slate-800 vsf:shadow-xl"
+      className="vsf:flex vsf:max-h-[min(75vh,560px)] vsf:font-poppins vsf:w-full vsf:flex-col vsf:overflow-hidden vsf:rounded-xl vsf:border vsf:border-slate-200 vsf:bg-white vsf:text-slate-800 vsf:shadow-xl"
     >
       <header className="vsf:flex vsf:shrink-0 vsf:items-center vsf:justify-between vsf:border-b vsf:border-slate-100 vsf:px-4 vsf:py-3">
         <div>
-          <h2 className="vsf:text-base vsf:font-bold">Notifications</h2>
+          <h2 className=" vsf:font-bold vsf:text-[1.1rem] vsf:font-secondary">Notifications</h2>
           <p className="vsf:text-xs vsf:text-slate-500">
             {unreadCount} non lue{unreadCount !== 1 ? "s" : ""}
           </p>
