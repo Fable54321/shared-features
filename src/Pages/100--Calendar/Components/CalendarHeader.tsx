@@ -30,7 +30,7 @@ export default function CalendarHeader() {
          <div className="vsf:flex vsf:items-center vsf:gap-2">
           <span
             aria-hidden="true"
-            className="vsf:h-3 vsf:w-3 vsf:shrink-0 vsf:rounded-full vsf:bg-yellow-500"
+            className="vsf:h-4 vsf:w-4 vsf:shrink-0  vsf:bg-yellow-500"
           />
           <span className="vsf:text-sm">: Au moins une personne est absente cette journée</span>
         </div>

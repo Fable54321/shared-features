@@ -68,10 +68,10 @@ export default function CalendarDay({
       </span>
 
       {isCurrentMonth && (
-        <div className="vsf:flex vsf:items-center vsf:justify-center vsf:gap-1">
+        <div className="vsf:flex vsf:items-center vsf:justify-center vsf:absolute vsf:right-[10%]">
           {hasTimeOff && (
             <span
-              className="vsf:h-2.5 vsf:w-2.5 vsf:rounded-full vsf:bg-yellow-500"
+              className="vsf:h-4.5 vsf:w-4.5 vsf:shadow-sm vsf:bg-yellow-500"
               title="Au moins une personne est absente cette journée"
             />
           )}
