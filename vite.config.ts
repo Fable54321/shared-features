@@ -30,6 +30,12 @@ export default defineConfig(({ mode, command }) => {
 
           "./CalendarFeature":
             "./src/Pages/100--Calendar/CalendarFeature.tsx",
+
+          "./NotificationProvider":
+           "./src/Pages/200--Notifications/Contexts/NotificationsContext.tsx",
+           
+          "./NotificationFeature":
+           "./src/Pages/200--Notifications/NotificationFeature.tsx", 
         },
 
         shared: {
