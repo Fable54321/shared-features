@@ -1,10 +1,10 @@
 {
   "latestErrorEvent": {
     "code": "TYPE-001",
-    "message": "Failed to generate type declaration. Execute the below cmd to reproduce and fix the error. #TYPE-001\nargs: {\"cmd\":\"C:\\\\nvm4w\\\\nodejs\\\\node.exe C:\\\\Users\\\\Utilisateur\\\\vegibec-shared-features\\\\node_modules\\\\typescript\\\\bin\\\\tsc --project C:\\\\Users\\\\Utilisateur\\\\vegibec-shared-features\\\\node_modules\\\\.federation\\\\tsconfig.df683d5ad45545d48695481c98246180.json\"}\nView the docs to see how to solve: https://module-federation.io/guide/troubleshooting/type#type-001",
+    "message": "Failed to generate type declaration. Execute the below cmd to reproduce and fix the error. #TYPE-001\nargs: {\"cmd\":\"C:\\\\nvm4w\\\\nodejs\\\\node.exe C:\\\\Users\\\\Utilisateur\\\\vegibec-shared-features\\\\node_modules\\\\typescript\\\\bin\\\\tsc --project C:\\\\Users\\\\Utilisateur\\\\vegibec-shared-features\\\\node_modules\\\\.federation\\\\tsconfig.df94a0fa71e407b6645929bc4e85c68c.json\"}\nView the docs to see how to solve: https://module-federation.io/guide/troubleshooting/type#type-001",
     "args": {
-      "cmd": "C:\\nvm4w\\nodejs\\node.exe C:\\Users\\Utilisateur\\vegibec-shared-features\\node_modules\\typescript\\bin\\tsc --project C:\\Users\\Utilisateur\\vegibec-shared-features\\node_modules\\.federation\\tsconfig.df683d5ad45545d48695481c98246180.json"
+      "cmd": "C:\\nvm4w\\nodejs\\node.exe C:\\Users\\Utilisateur\\vegibec-shared-features\\node_modules\\typescript\\bin\\tsc --project C:\\Users\\Utilisateur\\vegibec-shared-features\\node_modules\\.federation\\tsconfig.df94a0fa71e407b6645929bc4e85c68c.json"
     },
-    "timestamp": 1792424233555
+    "timestamp": 1792492316530
   }
 }
