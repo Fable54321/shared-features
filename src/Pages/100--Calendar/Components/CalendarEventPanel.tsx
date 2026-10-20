@@ -25,14 +25,14 @@ export default function CalendarEventPanel() {
   const events = getEventsByDate(selectedDate);
 
   return (
-    <aside className="min-w-0 rounded-xl border border-slate-200 bg-tertiary p-4">
-      <div className="mb-5 flex items-start justify-between gap-3">
+    <aside className="vsf:min-w-0 vsf:rounded-xl vsf:border vsf:border-slate-200 vsf:bg-tertiary vsf:p-4">
+      <div className="vsf:mb-5 vsf:flex vsf:items-start vsf:justify-between vsf:gap-3">
         <div>
-          <h3 className="text-base font-bold capitalize text-slate-800">
+          <h3 className="vsf:text-base vsf:font-bold vsf:capitalize vsf:text-slate-800">
             {formatSelectedDate(selectedDate)}
           </h3>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="vsf:mt-1 vsf:text-sm vsf:text-slate-500">
             Absence(s) de la journée
           </p>
         </div>
@@ -42,34 +42,34 @@ export default function CalendarEventPanel() {
           disabled={loading}
           onClick={() => void refreshEvents()}
           aria-label="Actualiser les événements"
-          className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-200 disabled:opacity-50"
+          className="vsf:rounded-lg vsf:p-2 vsf:text-slate-500 vsf:transition vsf:hover:bg-slate-200 vsf:disabled:opacity-50"
         >
           <RefreshCw
             size={18}
-            className={loading ? "animate-spin" : ""}
+            className={loading ? "vsf:animate-spin" : ""}
           />
         </button>
       </div>
 
       {error && (
-        <div role="alert" className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">
+        <div role="alert" className="vsf:mb-4 vsf:rounded-lg vsf:bg-red-50 vsf:p-3 vsf:text-sm vsf:text-red-700">
           {error}
         </div>
       )}
 
       {loading ? (
-        <p className="text-sm text-slate-500">
+        <p className="vsf:text-sm vsf:text-slate-500">
           Chargement des événements...
         </p>
       ) : error ? null : events.length === 0 ? (
-        <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">
-          <CalendarDays size={32} className="text-slate-300" />
-          <p className="text-sm text-slate-500">
+        <div className="vsf:flex vsf:flex-col vsf:items-center vsf:justify-center vsf:gap-3 vsf:py-12 vsf:text-center">
+          <CalendarDays size={32} className="vsf:text-slate-300" />
+          <p className="vsf:text-sm vsf:text-slate-500">
             Aucune absence pour cette journée.
           </p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="vsf:space-y-3">
           {events.map((event) => (
             <CalendarEventItem
               key={event.id}

@@ -45,30 +45,30 @@ export default function NotificationBell({
   }, [open]);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="vsf:relative">
       <button
         type="button"
         onClick={() => setOpen((previous) => !previous)}
         aria-label={`Notifications, ${unreadCount} non lues`}
         aria-expanded={open}
         aria-haspopup="true"
-        className={`relative flex h-10 w-10 items-center justify-center rounded-xl transition shadow-sm ${
+        className={`vsf:relative vsf:flex vsf:h-10 vsf:w-10 vsf:items-center vsf:justify-center vsf:rounded-xl vsf:transition vsf:shadow-sm ${
           open
-            ? "bg-secondary text-white"
-            : "bg-white text-secondary hover:bg-lime-50"
+            ? "vsf:bg-secondary vsf:text-white"
+            : "vsf:bg-white vsf:text-secondary vsf:hover:bg-lime-50"
         }`}
       >
         <Bell size={21} />
 
         {unreadCount > 0 && (
-          <p className="absolute -left-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+          <p className="vsf:absolute vsf:-left-1 vsf:-top-1 vsf:flex vsf:min-h-5 vsf:min-w-5 vsf:items-center vsf:justify-center vsf:rounded-full vsf:bg-red-500 vsf:px-1 vsf:text-[10px] vsf:font-bold vsf:text-white">
             {unreadCount > 99 ? "99+" : unreadCount}
           </p>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-1000 mt-2 w-[min(380px,calc(100vw-24px))]">
+        <div className="vsf:absolute vsf:right-0 vsf:top-full vsf:z-1000 vsf:mt-2 vsf:w-[min(380px,calc(100vw-24px))]">
           <NotificationDropdown
             appUrls={appUrls}
             onClose={() => setOpen(false)}

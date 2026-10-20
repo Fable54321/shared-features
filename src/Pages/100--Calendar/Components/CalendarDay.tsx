@@ -44,34 +44,34 @@ export default function CalendarDay({
       aria-label={date}
       aria-pressed={isSelected}
       className={`
-        relative flex min-h-16 flex-col items-center
-        gap-2 border-b border-r border-slate-300
-        px-1 py-3 transition-colors sm:min-h-30
+        vsf:relative vsf:flex vsf:min-h-16 vsf:flex-col vsf:items-center
+        vsf:gap-2 vsf:border-b vsf:border-r vsf:border-slate-300
+        vsf:px-1 vsf:py-3 vsf:transition-colors vsf:sm:min-h-30
         ${!isCurrentMonth
-          ? "cursor-default bg-slate-50 text-slate-300"
-          : "cursor-pointer hover:bg-green-50"}
-        ${isSelected ? "bg-lime-50 ring-1 ring-inset ring-primary" : ""}
+          ? "vsf:cursor-default vsf:bg-slate-50 vsf:text-slate-300"
+          : "vsf:cursor-pointer vsf:hover:bg-green-50"}
+        ${isSelected ? "vsf:bg-lime-50 vsf:ring-1 vsf:ring-inset vsf:ring-primary" : ""}
       `}
     >
       <span
         className={`
-          flex h-7 w-7 items-center justify-center
-          rounded-full text-[0.975rem] font-medium
+          vsf:flex vsf:h-7 vsf:w-7 vsf:items-center vsf:justify-center
+          vsf:rounded-full vsf:text-[0.975rem] vsf:font-medium
           ${isToday
-            ? "bg-secondary text-white"
+            ? "vsf:bg-secondary vsf:text-white"
             : isCurrentMonth
-              ? "text-slate-700"
-              : "text-slate-300"}
+              ? "vsf:text-slate-700"
+              : "vsf:text-slate-300"}
         `}
       >
         {day}
       </span>
 
       {isCurrentMonth && (
-        <div className="flex items-center justify-center gap-1">
+        <div className="vsf:flex vsf:items-center vsf:justify-center vsf:gap-1">
           {hasTimeOff && (
             <span
-              className="h-2.5 w-2.5 rounded-full bg-yellow-500"
+              className="vsf:h-2.5 vsf:w-2.5 vsf:rounded-full vsf:bg-yellow-500"
               title="Au moins une personne est absente cette journée"
             />
           )}

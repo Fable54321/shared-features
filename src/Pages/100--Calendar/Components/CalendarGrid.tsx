@@ -66,20 +66,20 @@ export default function CalendarGrid() {
   }, [currentYear, currentMonth]);
 
   return (
-    <div className="min-w-0">
-      <div className="overflow-hidden rounded-xl border border-slate-200">
-        <div className="grid grid-cols-7 bg-secondary text-white">
+    <div className="vsf:min-w-0">
+      <div className="vsf:overflow-hidden vsf:rounded-xl vsf:border vsf:border-slate-200">
+        <div className="vsf:grid vsf:grid-cols-7 vsf:bg-secondary vsf:text-white">
           {WEEKDAYS.map((day) => (
             <div
               key={day}
-              className="border-b border-slate-200 border-r py-3 text-center text-xs font-semibold text-white sm:text-[0.95rem]"
+              className="vsf:border-b vsf:border-slate-200 vsf:border-r vsf:py-3 vsf:text-center vsf:text-xs vsf:font-semibold vsf:text-white vsf:sm:text-[0.95rem]"
             >
               {day}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7">
+        <div className="vsf:grid vsf:grid-cols-7">
           {days.map((day) => (
             <CalendarDay
               key={day.date}
@@ -90,7 +90,7 @@ export default function CalendarGrid() {
       </div>
 
       <div
-        className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 sm:text-sm"
+        className="vsf:mt-3 vsf:flex vsf:flex-wrap vsf:items-center vsf:gap-x-5 vsf:gap-y-2 vsf:text-xs vsf:text-slate-600 vsf:sm:text-sm"
         aria-label="Légende du calendrier"
       >
         

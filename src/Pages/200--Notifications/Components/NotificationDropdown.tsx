@@ -153,25 +153,25 @@ export default function NotificationDropdown({
     <section
       role="region"
       aria-label="Notifications"
-      className="flex max-h-[min(75vh,560px)] w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white text-slate-800 shadow-xl"
+      className="vsf:flex vsf:max-h-[min(75vh,560px)] vsf:w-full vsf:flex-col vsf:overflow-hidden vsf:rounded-xl vsf:border vsf:border-slate-200 vsf:bg-white vsf:text-slate-800 vsf:shadow-xl"
     >
-      <header className="flex shrink-0 items-center justify-between border-b border-slate-100 px-4 py-3">
+      <header className="vsf:flex vsf:shrink-0 vsf:items-center vsf:justify-between vsf:border-b vsf:border-slate-100 vsf:px-4 vsf:py-3">
         <div>
-          <h2 className="text-base font-bold">Notifications</h2>
-          <p className="text-xs text-slate-500">
+          <h2 className="vsf:text-base vsf:font-bold">Notifications</h2>
+          <p className="vsf:text-xs vsf:text-slate-500">
             {unreadCount} non lue{unreadCount !== 1 ? "s" : ""}
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="vsf:flex vsf:items-center vsf:gap-2">
           <button
             type="button"
             title="Actualiser"
             aria-label="Actualiser les notifications"
             onClick={() => void reload().catch(() => {})}
-            className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+            className="vsf:rounded-lg vsf:p-2 vsf:text-slate-500 vsf:hover:bg-slate-100"
           >
-            <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
+            <RefreshCw size={17} className={loading ? "vsf:animate-spin" : ""} />
           </button>
 
           <button
@@ -188,24 +188,24 @@ export default function NotificationDropdown({
             disabled={unreadCount === 0}
             title="Tout marquer comme lu"
             aria-label="Tout marquer comme lu"
-            className="rounded-lg p-2 text-secondary hover:bg-lime-50 disabled:opacity-40"
+            className="vsf:rounded-lg vsf:p-2 vsf:text-secondary vsf:hover:bg-lime-50 vsf:disabled:opacity-40"
           >
             <CheckCheck size={19} />
           </button>
         </div>
       </header>
 
-      <div className="flex shrink-0 gap-2 border-b border-slate-100 px-4 py-2">
+      <div className="vsf:flex vsf:shrink-0 vsf:gap-2 vsf:border-b vsf:border-slate-100 vsf:px-4 vsf:py-2">
         <button
           type="button"
           onClick={() => {
             setUnreadOnly(false);
             void reload(1, false).catch(() => {});
           }}
-          className={`rounded-full px-3 py-1.5 text-xs font-medium ${
+          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium ${
             !unreadOnly
-              ? "bg-secondary text-white"
-              : "bg-slate-100 text-slate-600"
+              ? "vsf:bg-secondary vsf:text-white"
+              : "vsf:bg-slate-100 vsf:text-slate-600"
           }`}
         >
           Toutes
@@ -216,10 +216,10 @@ export default function NotificationDropdown({
             setUnreadOnly(true);
             void reload(1, true).catch(() => {});
           }}
-          className={`rounded-full px-3 py-1.5 text-xs font-medium ${
+          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium ${
             unreadOnly
-              ? "bg-secondary text-white"
-              : "bg-slate-100 text-slate-600"
+              ? "vsf:bg-secondary vsf:text-white"
+              : "vsf:bg-slate-100 vsf:text-slate-600"
           }`}
         >
           Non lues
@@ -227,20 +227,20 @@ export default function NotificationDropdown({
       </div>
 
       {(error || actionError) && (
-        <p role="alert" className="bg-red-50 px-4 py-2 text-xs text-red-700">
+        <p role="alert" className="vsf:bg-red-50 vsf:px-4 vsf:py-2 vsf:text-xs vsf:text-red-700">
           {actionError || error}
         </p>
       )}
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="vsf:min-h-0 vsf:flex-1 vsf:overflow-y-auto">
         {loading && notifications.length === 0 ? (
-          <p className="p-6 text-center text-sm text-slate-500">
+          <p className="vsf:p-6 vsf:text-center vsf:text-sm vsf:text-slate-500">
             Chargement...
           </p>
         ) : notifications.length === 0 ? (
-          <div className="flex flex-col items-center gap-2 px-4 py-12 text-slate-400">
+          <div className="vsf:flex vsf:flex-col vsf:items-center vsf:gap-2 vsf:px-4 vsf:py-12 vsf:text-slate-400">
             <BellOff size={30} />
-            <p className="text-sm">Aucune notification</p>
+            <p className="vsf:text-sm">Aucune notification</p>
           </div>
         ) : (
           notifications.map((notification) => (
@@ -248,7 +248,7 @@ export default function NotificationDropdown({
               key={notification.id}
               className={
                 busyIds.includes(notification.id)
-                  ? "pointer-events-none opacity-50"
+                  ? "vsf:pointer-events-none vsf:opacity-50"
                   : ""
               }
             >
@@ -264,18 +264,18 @@ export default function NotificationDropdown({
       </div>
 
       {totalPages > 1 && (
-        <footer className="flex shrink-0 items-center justify-between border-t border-slate-100 px-4 py-3">
+        <footer className="vsf:flex vsf:shrink-0 vsf:items-center vsf:justify-between vsf:border-t vsf:border-slate-100 vsf:px-4 vsf:py-3">
           <button
             type="button"
             disabled={loading || page <= 1}
             onClick={() => void reload(page - 1).catch(() => {})}
-            className="rounded-lg p-2 disabled:opacity-30"
+            className="vsf:rounded-lg vsf:p-2 vsf:disabled:opacity-30"
             aria-label="Page précédente"
           >
             <ChevronLeft size={18} />
           </button>
 
-          <span className="text-xs text-slate-500">
+          <span className="vsf:text-xs vsf:text-slate-500">
             Page {page} / {totalPages}
           </span>
 
@@ -283,7 +283,7 @@ export default function NotificationDropdown({
             type="button"
             disabled={loading || page >= totalPages}
             onClick={() => void reload(page + 1).catch(() => {})}
-            className="rounded-lg p-2 disabled:opacity-30"
+            className="vsf:rounded-lg vsf:p-2 vsf:disabled:opacity-30"
             aria-label="Page suivante"
           >
             <ChevronRight size={18} />
