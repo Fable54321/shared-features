@@ -157,7 +157,7 @@ export default function NotificationDropdown({
     >
       <header className="vsf:flex vsf:shrink-0 vsf:items-center vsf:justify-between vsf:border-b vsf:border-slate-100 vsf:px-4 vsf:py-3">
         <div>
-          <h2 className=" vsf:font-bold vsf:text-[1.1rem] vsf:font-secondary">Notifications</h2>
+          <h2 className=" vsf:font-bold vsf:text-[1.2rem] vsf:font-secondary">Notifications</h2>
           <p className="vsf:text-xs vsf:text-slate-500">
             {unreadCount} non lue{unreadCount !== 1 ? "s" : ""}
           </p>

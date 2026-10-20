@@ -37,10 +37,10 @@ export default function NotificationItem({
           onClick={() => onOpen(notification)}
           className="vsf:w-full vsf:cursor-pointer vsf:text-left"
         >
-          <p className="vsf:text-md vsf:font-semibold vsf:text-slate-800">
+          <p className="vsf:text-[0.95rem] vsf:font-semibold vsf:text-black">
             {notification.title}
           </p>
-          <p className="vsf:mt-1 vsf:line-clamp-3 vsf:text-sm vsf:text-slate-600">
+          <p className="vsf:mt-1 vsf:line-clamp-3 vsf:text-[0.85rem] vsf:text-slate-600">
             {notification.message}
           </p>
           <p className="vsf:mt-2 vsf:text-[11px] vsf:text-slate-400">
@@ -78,7 +78,7 @@ export default function NotificationItem({
             aria-label="Supprimer la notification"
             className="vsf:ml-auto vsf:text-slate-400 vsf:hover:text-red-600"
           >
-            <Trash2 size={15} />
+            <Trash2 size={18} />
           </button>
         </div>
       </div>

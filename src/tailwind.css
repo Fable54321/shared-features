@@ -16,6 +16,6 @@
   --color-secondary-light: hsl(85, 33%, 92%);
   --color-secondary-alt: hsl(85, 43%, 36%);
   --font-primary: system-ui, "Poppins", Roboto, sans-serif;
-  --font-secondary: system-ui, "Merriweather", Roboto, sans-serif;
+  --font-secondary: "Merriweather", system-ui, Roboto, sans-serif;
   --font-poppins: "Poppins", system-ui, sans-serif;
 }
