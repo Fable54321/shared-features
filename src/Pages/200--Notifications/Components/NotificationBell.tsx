@@ -52,7 +52,7 @@ export default function NotificationBell({
         aria-label={`Notifications, ${unreadCount} non lues`}
         aria-expanded={open}
         aria-haspopup="true"
-        className={`vsf:relative vsf:flex vsf:h-10 vsf:w-10 vsf:items-center vsf:justify-center vsf:rounded-xl vsf:transition vsf:shadow-sm ${
+        className={`vsf:relative vsf:flex vsf:h-10 vsf:w-10 vsf:items-center vsf:cursor-pointer vsf:justify-center vsf:rounded-xl vsf:transition vsf:shadow-sm ${
           open
             ? "vsf:bg-secondary vsf:text-white"
             : "vsf:bg-white vsf:text-secondary vsf:hover:bg-lime-50"
