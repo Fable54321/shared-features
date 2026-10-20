@@ -1,5 +1,6 @@
 
 import NotificationBell from "./Components/NotificationBell";
+import "../../tailwind.css"
 
 import {
   NotificationProvider,

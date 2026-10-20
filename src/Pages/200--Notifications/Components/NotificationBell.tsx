@@ -52,7 +52,7 @@ export default function NotificationBell({
         aria-label={`Notifications, ${unreadCount} non lues`}
         aria-expanded={open}
         aria-haspopup="true"
-        className={`relative flex h-10 w-10 items-center justify-center rounded-xl transition ${
+        className={`relative flex h-10 w-10 items-center justify-center rounded-xl transition shadow-sm ${
           open
             ? "bg-secondary text-white"
             : "bg-white text-secondary hover:bg-lime-50"
@@ -61,9 +61,9 @@ export default function NotificationBell({
         <Bell size={21} />
 
         {unreadCount > 0 && (
-          <span className="absolute -right-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+          <p className="absolute -left-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
             {unreadCount > 99 ? "99+" : unreadCount}
-          </span>
+          </p>
         )}
       </button>
 
