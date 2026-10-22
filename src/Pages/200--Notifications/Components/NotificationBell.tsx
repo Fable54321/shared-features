@@ -8,14 +8,30 @@ import NotificationDropdown, {
 
 interface NotificationBellProps {
   appUrls: NotificationAppUrls;
+  autoReadDelayMs: number;
 }
 
 export default function NotificationBell({
   appUrls,
+  autoReadDelayMs,
 }: NotificationBellProps) {
-  const { unreadCount } = useNotifications();
+  const { unreadCount, markAllAsRead } = useNotifications();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open || autoReadDelayMs < 0) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      void markAllAsRead().catch(() => {});
+    }, autoReadDelayMs);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [autoReadDelayMs, markAllAsRead, open]);
 
   useEffect(() => {
     if (!open) return;
