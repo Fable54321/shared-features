@@ -21,6 +21,7 @@ export interface TimeOffCalendarEvent extends CalendarEvent {
 
   employeeId: number;
   employeeName: string;
+  isOwnRequest: boolean;
 
   /**
    * Actual dates requested by the employee.
@@ -34,45 +35,19 @@ export interface TimeOffCalendarEvent extends CalendarEvent {
 export type CalendarEventItem = TimeOffCalendarEvent;
 
 /**
- * Existing backend response.
+ * GET /time-off/calendar response item.
  */
-export interface TimeOffRequest {
+export interface CalendarTimeOffRequest {
   id: number;
   requester_user_id: number;
   requested_dates: string[];
-
-  reason: string | null;
-  payment_preference: string;
-  payment_preference_other: string | null;
-
   status: string;
-
-  reviewed_by_user_id: number | null;
-  reviewed_at: string | null;
-  review_note: string | null;
-
-  created_at: string;
-  updated_at: string;
+  requester_name: string | null;
+  requester_surname: string | null;
+  requester_username: string | null;
+  is_own_request: boolean;
 }
 
-export interface PaginatedResponse<T> {
-  data: T[];
-  page: number;
-  limit: number;
-  total: number;
-}
-
-export interface CalendarEmployee {
-  id: number;
-  username: string;
-  email: string | null;
-  name: string | null;
-  surname: string | null;
-  is_office: boolean;
-  is_active: boolean;
-}
-
-export interface EmployeesResponse {
-  success: boolean;
-  users: CalendarEmployee[];
+export interface CalendarTimeOffResponse {
+  data: CalendarTimeOffRequest[];
 }

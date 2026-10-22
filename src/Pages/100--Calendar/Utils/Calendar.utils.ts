@@ -2,8 +2,8 @@
 import type {
   CalendarEventItem,
   CalendarEventStatus,
+  CalendarTimeOffRequest,
   TimeOffCalendarEvent,
-  TimeOffRequest,
 } from "../Types/Calendar.types";
 
 export function isVisibleCalendarStatus(
@@ -18,8 +18,7 @@ export function isVisibleCalendarStatus(
  */
 
 export function mapTimeOffToCalendarEvent(
-  request: TimeOffRequest,
-  employeeName?: string,
+  request: CalendarTimeOffRequest,
 ): TimeOffCalendarEvent | null {
   if (!isVisibleCalendarStatus(request.status)) {
     return null;
@@ -39,7 +38,11 @@ export function mapTimeOffToCalendarEvent(
   if (dates.length === 0) return null;
 
   const name =
-    employeeName?.trim() ||
+    [request.requester_surname, request.requester_name]
+      .filter(Boolean)
+      .join(" ")
+      .trim() ||
+    request.requester_username?.trim() ||
     `Employee #${request.requester_user_id}`;
 
   return {
@@ -57,8 +60,8 @@ export function mapTimeOffToCalendarEvent(
 
     employeeId: Number(request.requester_user_id),
     employeeName: name,
+    isOwnRequest: request.is_own_request,
 
-    reason: request.reason,
     sourceId: Number(request.id),
   };
 }

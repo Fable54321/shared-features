@@ -12,10 +12,7 @@ import {
 
 import type {
   CalendarEventItem,
-  PaginatedResponse,
-  TimeOffRequest,
-  CalendarEmployee,
-  EmployeesResponse,
+  CalendarTimeOffResponse,
 } from "../Types/Calendar.types";
 
 import {
@@ -36,8 +33,6 @@ export type CalendarApiFetch = <T>(
 
 interface CalendarContextType {
   events: CalendarEventItem[];
-
-  employees: CalendarEmployee[];
 
   loading: boolean;
   error: string | null;
@@ -94,8 +89,6 @@ export function CalendarProvider({
     () => new Date().getFullYear(),
   );
 
-  const [employees, setEmployees] = useState<CalendarEmployee[]>([]);
-
   const [events, setEvents] =
     useState<CalendarEventItem[]>([]);
 
@@ -122,96 +115,29 @@ export function CalendarProvider({
   /**
    * First event source: employee time off.
    *
-   * Current backend:
-   * GET /time-off (admin-only collection route)
-   *
-   * This route is admin-only.
+   * GET /time-off/calendar is available to every authenticated user and only
+   * returns the fields that are safe and necessary for the shared calendar.
    */
-  
-  const loadEmployees = useCallback(async (): Promise<
-    Map<number, string>
-  > => {
-    const response = await apiFetch<EmployeesResponse>(
-      "/portal/list",
-    );
-
-    if (!response.success) {
-      throw new Error("Failed to load employees");
-    }
-
-    const normalizedEmployees = response.users.map((user) => ({
-      ...user,
-      id: Number(user.id),
-    }));
-
-    setEmployees(normalizedEmployees);
-
-    return new Map(
-      normalizedEmployees.map((user) => [
-        user.id,
-        [user.surname, user.name]
-          .filter(Boolean)
-          .join(" ")
-          .trim() || user.username,
-      ]),
-    );
-  }, [apiFetch]);
-
-
-
-
-
-
-
-
-
-const loadTimeOffEvents = useCallback(
-  async (): Promise<CalendarEventItem[]> => {
-    const [employeeNames, allRequests] = await Promise.all([
-      loadEmployees(),
-      (async () => {
-        const requests: TimeOffRequest[] = [];
-
-        const limit = 100;
-        let page = 1;
-        let total: number;
-
-        do {
-          const response = await apiFetch<
-            PaginatedResponse<TimeOffRequest>
-          >(
-            `/time-off?page=${page}&limit=${limit}`,
-          );
-
-          requests.push(...response.data);
-          total = response.total;
-
-          if (response.data.length === 0) break;
-
-          page++;
-        } while (requests.length < total);
-
-        return requests;
-      })(),
-    ]);
-
-    return allRequests
-      .map((request) =>
-        mapTimeOffToCalendarEvent(
-          request,
-          employeeNames.get(Number(request.requester_user_id)),
-        ),
-      )
-      .filter(
-        (event): event is CalendarEventItem =>
-          event !== null,
+  const loadTimeOffEvents = useCallback(
+    async (): Promise<CalendarEventItem[]> => {
+      const params = new URLSearchParams({
+        from: monthRange.start,
+        to: monthRange.end,
+      });
+      const response = await apiFetch<CalendarTimeOffResponse>(
+        `/time-off/calendar?${params.toString()}`,
       );
-  },
-  [apiFetch, loadEmployees],
-);
 
+      return response.data
+        .map(mapTimeOffToCalendarEvent)
+        .filter(
+          (event): event is CalendarEventItem =>
+            event !== null,
+        );
+    },
+    [apiFetch, monthRange],
+  );
 
- 
   const refreshEvents = useCallback(async () => {
     const id = ++requestId.current;
 
@@ -260,16 +186,16 @@ const loadTimeOffEvents = useCallback(
   /**
    * Reload when the displayed month changes.
    */
- useEffect(() => {
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  void refreshEvents();
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void refreshEvents();
 
-  const currentRequestId = requestId;
+    const currentRequestId = requestId;
 
-  return () => {
-    currentRequestId.current++;
-  };
-}, [refreshEvents]);
+    return () => {
+      currentRequestId.current++;
+    };
+  }, [refreshEvents]);
 
   /**
    * Month navigation.
@@ -319,7 +245,6 @@ const loadTimeOffEvents = useCallback(
   const value = useMemo<CalendarContextType>(
     () => ({
       events,
-      employees,
 
       loading,
       error,
@@ -342,7 +267,6 @@ const loadTimeOffEvents = useCallback(
     }),
     [
       events,
-      employees,
       loading,
       error,
       selectedDate,
