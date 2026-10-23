@@ -408,6 +408,7 @@ export function NotificationProvider({
   // ============================================
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void fetchNotifications().catch(console.error);
     void fetchUnreadCount().catch(console.error);
 
