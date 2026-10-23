@@ -43,6 +43,7 @@ export default function NotificationDropdown({
     markAsUnread,
     markAllAsRead,
     deleteNotification,
+    deleteAllNotifications,
   } = useNotifications();
 
   const [unreadOnly, setUnreadOnly] = useState(false);
@@ -147,6 +148,13 @@ export default function NotificationDropdown({
       await deleteNotification(notification.id);
     });
 
+    const handleDeleteAll = () => {
+      withBusy("all", async () => {
+        await deleteAllNotifications();
+      });
+    }
+
+
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
   return (
@@ -195,17 +203,17 @@ export default function NotificationDropdown({
         </div>
       </header>
 
-      <div className="vsf:flex vsf:shrink-0 vsf:gap-2 vsf:border-b vsf:border-slate-100 vsf:px-4 vsf:py-2">
+      <div className="vsf:flex vsf:shrink-0 vsf:gap-2 vsf:border-b vsf:w-full vsf:border-slate-100 vsf:px-4 vsf:py-2">
         <button
           type="button"
           onClick={() => {
             setUnreadOnly(false);
             void reload(1, false).catch(() => {});
           }}
-          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium ${
+          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium shadow-sm ${
             !unreadOnly
-              ? "vsf:bg-secondary vsf:text-white"
-              : "vsf:bg-slate-100 vsf:text-slate-600"
+              ? "vsf:bg-secondary vsf:text-white vsf:shadow-md"
+              : "vsf:bg-slate-200 vsf:text-slate-900 vsf:shadow-sm"
           }`}
         >
           Toutes
@@ -216,14 +224,27 @@ export default function NotificationDropdown({
             setUnreadOnly(true);
             void reload(1, true).catch(() => {});
           }}
-          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium ${
+          className={`vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium  ${
             unreadOnly
-              ? "vsf:bg-secondary vsf:text-white"
-              : "vsf:bg-slate-100 vsf:text-slate-600"
+              ? "vsf:bg-secondary vsf:text-white vsf:shadow-md"
+              : "vsf:bg-slate-200 vsf:text-slate-900 vsf:shadow-sm"
           }`}
         >
           Non lues
         </button>
+
+        
+          <button
+            type="button"
+            onClick={() => {
+              handleDeleteAll();
+            }}
+            className="vsf:rounded-full vsf:px-3 vsf:py-1.5 vsf:text-xs vsf:font-medium vsf:bg-red-600 vsf:text-white
+            vsf:ml-auto vsf:mr-0"
+          >
+            Effacer toutes
+          </button>
+        
       </div>
 
       {(error || actionError) && (
