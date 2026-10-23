@@ -46,6 +46,8 @@ interface NotificationContextType {
   sending: boolean;
   error: string | null;
 
+  deleteAllNotifications: () => Promise<number>;
+
   fetchNotifications: (
     page?: number,
     limit?: number,
@@ -403,6 +405,40 @@ export function NotificationProvider({
     ],
   );
 
+
+  // ============================================
+// DELETE ALL NOTIFICATIONS
+// ============================================
+
+const deleteAllNotifications = useCallback(async (): Promise<number> => {
+  setError(null);
+
+  try {
+    const response = await apiFetch<{
+      success: boolean;
+      deleted: number;
+    }>("/notifications/all", {
+      method: "DELETE",
+    });
+
+    // Invalidate pending requests to avoid restoring deleted notifications.
+    listRequestId.current++;
+    countRequestId.current++;
+
+    // Clear local state.
+    setNotifications([]);
+    setUnreadCount(0);
+    setTotal(0);
+    setPage(1);
+    setLoading(false);
+
+    return response.deleted;
+  } catch (err) {
+    setError(getErrorMessage(err));
+    throw err;
+  }
+}, [apiFetch]);
+
   // ============================================
   // INITIAL FETCH + POLLING
   // ============================================
@@ -455,6 +491,7 @@ export function NotificationProvider({
       markAsUnread,
       markAllAsRead,
       deleteNotification,
+      deleteAllNotifications,
 
       clearError,
     }),
@@ -476,6 +513,7 @@ export function NotificationProvider({
       markAsUnread,
       markAllAsRead,
       deleteNotification,
+      deleteAllNotifications,
       clearError,
     ],
   );
